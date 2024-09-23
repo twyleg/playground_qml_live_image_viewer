@@ -3,6 +3,8 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts
 
+import "./items"
+
 ApplicationWindow
 {
     id: app
@@ -10,7 +12,7 @@ ApplicationWindow
     visible: true
     width: 1920
     height: 1080
-    title: qsTr("Minimal Qml")
+    title: qsTr("Minimal Qml Live Image Viewer")
 
     Column {
 
@@ -31,37 +33,52 @@ ApplicationWindow
             }
         }
 
-        Slider {
+        AdvancedSlider {
             id: sliderRed
 
             width: parent.width
 
+            name: "red"
             from: 0
-            to: 1
+            to: 255
             value: parameterModel.red
-            stepSize: 0.01
+            stepSize: 0.1
+
+            onValueChanged: {
+                parameterModel.red = value
+            }
         }
 
-        Slider {
+        AdvancedSlider {
             id: sliderGreen
 
             width: parent.width
 
+            name: "green"
             from: 0
-            to: 1
+            to: 255
             value: parameterModel.green
-            stepSize: 0.01
+            stepSize: 0.1
+
+            onValueChanged: {
+                parameterModel.green = value
+            }
         }
 
-        Slider {
+        AdvancedSlider {
             id: sliderBlue
 
             width: parent.width
 
+            name: "blue"
             from: 0
-            to: 1
+            to: 255
             value: parameterModel.blue
-            stepSize: 0.01
+            stepSize: 0.1
+
+            onValueChanged: {
+                parameterModel.blue = value
+            }
         }
 
     }

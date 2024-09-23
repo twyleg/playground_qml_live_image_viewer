@@ -26,7 +26,6 @@ public: \
 			name = value; \
 			mMutex.unlock(); \
 			emit name##Changed(); \
-			emit parameterChanged(); \
 		}\
 	} \
 Q_SIGNALS: \
@@ -45,14 +44,9 @@ private:
 
 public:
 
-	ADD_PROPERTY(int, red, Red, 0)
-	ADD_PROPERTY(int, green, Green, 0)
-	ADD_PROPERTY(int, blue, Blue, 0)
-
-	// ParameterModel getCopy() const {
-	// 	QMutexLocker<QMutex>(&mMutex);
-	// 	return ParameterModel(this);
-	// }
+	ADD_PROPERTY(double, red, Red, 0.0)
+	ADD_PROPERTY(double, green, Green, 0.0)
+	ADD_PROPERTY(double, blue, Blue, 0.0)
 
 Q_SIGNALS:
 
@@ -65,17 +59,22 @@ class ImageModel : public QObject
 	Q_OBJECT
 
 private:
+
+	QMutex mMutex;
 	QPixmap image;
 	Q_PROPERTY(QPixmap image READ getImage WRITE setImage NOTIFY imageChanged)
 
 
 public:
 
-	const QPixmap& getImage() const {
+	const QPixmap& getImage() {
+		QMutexLocker locker(&mMutex);
 		return image;
 	}
 	void setImage(const QPixmap& image) {
+		mMutex.lock();
 		this->image = image;
+		mMutex.unlock();
 		emit imageChanged();
 	}
 

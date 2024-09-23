@@ -24,14 +24,10 @@ public:
 
 private:
 
-	std::string mColor = "red";
 	playground_qml_live_image_viewer::ui::ImageModel& mImageModel;
 	playground_qml_live_image_viewer::ui::ParameterModel& mParameterModel;
 
 	QPixmap generate_test_image(int red, int green, int blue);
-
-signals:
-	void imageReady(QPixmap);
 
 };
 

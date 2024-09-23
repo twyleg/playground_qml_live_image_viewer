@@ -6,8 +6,6 @@
 #include <boost/optional.hpp>
 #include <fmt/core.h>
 
-#include <iostream>
-
 namespace playground_qml_live_image_viewer::ui {
 
 UI::UI(int argc, char **argv) :
@@ -29,7 +27,8 @@ int UI::run() {
 	mEngine.rootContext()->setContextProperty("parameterModel", &mParameterModel);
 	mEngine.addImageProvider("stream", this);
 
-    mEngine.load(":/qml/main_window.qml");
+	mEngine.addImportPath("qrc:/");
+	mEngine.load("qrc:/frontend/qml/MainWindow.qml");
 
     return mApplication.exec();
 }

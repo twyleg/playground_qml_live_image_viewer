@@ -19,6 +19,7 @@ add_library(${TARGET_NAME}
     ui.h
     ui.qrc
     model.h
+
 )
 
 add_library("${NAMESPACE}::${MODULE}" ALIAS ${TARGET_NAME})
