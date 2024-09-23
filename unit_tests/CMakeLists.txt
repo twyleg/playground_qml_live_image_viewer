@@ -7,7 +7,6 @@ set(TARGET_NAME unit_tests)
 #
 add_executable(${TARGET_NAME}
     main.cc
-    example_class_test.cc
 )
 
 
@@ -25,7 +24,7 @@ set_target_properties(${TARGET_NAME}
 # link against libs
 #
 target_link_libraries(${TARGET_NAME}
-    template_project_cpp::core
+    playground_qml_live_image_viewer::core
     GTest::gmock
     GTest::gtest
     GTest::gmock_main

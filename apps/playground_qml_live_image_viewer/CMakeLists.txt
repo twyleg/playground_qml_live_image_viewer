@@ -1,5 +1,5 @@
 # Copyright (C) 2024 twyleg
-set(TARGET_NAME template_project_cpp_qt_qml)
+set(TARGET_NAME playground_qml_live_image_viewer)
 
 find_package(Qt6 COMPONENTS REQUIRED Core)
 
@@ -28,7 +28,7 @@ set_target_properties(${TARGET_NAME}
 # link against libs
 #
 target_link_libraries(${TARGET_NAME}
-    template_project_cpp::core
-    template_project_cpp::ui
+    playground_qml_live_image_viewer::core
+    playground_qml_live_image_viewer::ui
     Qt::Core
 )

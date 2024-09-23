@@ -1,6 +1,6 @@
 # Copyright (C) 2024 twyleg
-set(NAMESPACE template_project_cpp)
-set(MODULE ui)
+set(NAMESPACE playground_qml_live_image_viewer)
+set(MODULE core)
 
 
 set(TARGET_NAME "${NAMESPACE}_${MODULE}")
@@ -8,17 +8,17 @@ set(TARGET_NAME "${NAMESPACE}_${MODULE}")
 #
 # find packages
 #
-find_package(Qt6 COMPONENTS REQUIRED Core Widgets Multimedia Qml Quick QuickControls2)
+find_package(fmt REQUIRED)
+find_package(Boost COMPONENTS REQUIRED system)
+find_package(Qt6 COMPONENTS REQUIRED Core)
 
 
 #
 # add source files to target
 #
 add_library(${TARGET_NAME}
-    ui.cc
-    ui.h
-    ui.qrc
-    model.h
+    image_processing.cc
+    image_processing.h
 )
 
 add_library("${NAMESPACE}::${MODULE}" ALIAS ${TARGET_NAME})
@@ -40,12 +40,10 @@ set_target_properties(${TARGET_NAME}
 # link against libs
 #
 target_link_libraries(${TARGET_NAME}
+    playground_qml_live_image_viewer::ui
+    fmt::fmt
+    Boost::system
     Qt::Core
-    Qt::Widgets
-    Qt::Multimedia
-    Qt::Qml
-    Qt::Quick
-    Qt::QuickControls2
 )
 
 

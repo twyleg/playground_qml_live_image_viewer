@@ -2,17 +2,17 @@
 cmake_minimum_required(VERSION 3.16.3)
 
 
-project(template_project_cpp)
+project(playground_qml_live_image_viewer)
 
 # Externals
 add_subdirectory(external/googletest/)
 
 # Libs
-add_subdirectory(libs/template_project_cpp/core/)
-add_subdirectory(libs/template_project_cpp/ui/)
+add_subdirectory(libs/playground_qml_live_image_viewer/core/)
+add_subdirectory(libs/playground_qml_live_image_viewer/ui/)
 
 # Apps
-add_subdirectory(apps/template_project_cpp)
+add_subdirectory(apps/playground_qml_live_image_viewer)
 
 # Unit-Test
 add_subdirectory(unit_tests/)
