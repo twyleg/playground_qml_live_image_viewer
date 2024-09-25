@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/frontend">
-        <file>qml/MainWindow.qml</file>
-        <file>qml/items/AdvancedSlider.qml</file>
-    </qresource>
-</RCC>
