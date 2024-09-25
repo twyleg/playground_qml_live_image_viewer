@@ -2,8 +2,11 @@
 #pragma once
 
 #include <cstdint>
-#include "Shape.h" 
-#include "image_processing.h"
+
+#include <playground_qml_live_image_viewer/ui/model.h>
+
+
+#include "Shape/Shape.h"
 
 
 
@@ -61,5 +64,5 @@ private:
     Color* c;
     FpsCounter* fc;
 private:
-    playground_qml_live_image_viewer::ui::ParameterModel& parameterModel
+	playground_qml_live_image_viewer::ui::ParameterModel& mParameterModel;
 };

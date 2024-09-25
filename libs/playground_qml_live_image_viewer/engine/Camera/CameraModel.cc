@@ -1,6 +1,5 @@
 // Copyright (C) 2024 twyleg, Marvin-VW
 #include "CameraModel.h"
-#include "Shape.h"
 #include <opencv2/opencv.hpp>
 
 CameraModel::CameraModel(double sensorWidth, double sensorHeight, double focalLength, uint32_t resolutionX, uint32_t resolutionY, uint32_t u0, uint32_t v0) {

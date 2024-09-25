@@ -2,27 +2,26 @@
 #pragma once
 
 #include "RenderSystem.h"
-#include "Shape.h"
-#include "CameraModel.h"
-#include "HomogenousTransformationMatrix.h"
-#include "ClippingSpace.h"
-#include "Vectors.h"
-#include "Color.h"
-#include "Window.h"
+#include "Shape/Shape.h"
+#include "Camera/CameraModel.h"
+#include "Matrix/HomogenousTransformationMatrix.h"
+#include "ClippingSpace/ClippingSpace.h"
+#include "Vector/Vectors.h"
+#include "Color/Color.h"
+
 #include <opencv2/core.hpp>
 #include <vector>
-#include "image_processing.h"
 
 class Engine {
 public:
     Engine(int frame_width, int frame_height, playground_qml_live_image_viewer::ui::ParameterModel& parameterModel);
     ~Engine();
 
-    cv::Mat run(cv::Mat frame);
+	cv::Mat run(cv::Mat& frame);
     RenderSystem* renderer;
     CameraModel* camera;
 
-    playground_qml_live_image_viewer::ui::ParameterModel& parameterModel;
+	playground_qml_live_image_viewer::ui::ParameterModel& mParameterModel;
 
 private:
     Shape* shape;

@@ -1,18 +1,19 @@
 // Copyright (C) 2024 Marvin-VW
 #include "RenderSystem.h"
-#include "Shape.h"
-#include "iostream"
-#include "HomogenousTransformationMatrix.h"
-#include "CameraModel.h"
-#include "FPSCounter.h"
-#include "ClippingSpace.h"
-#include "Color.h"
-#include "Vectors.h"
+#include "Matrix/HomogenousTransformationMatrix.h"
+#include "Camera/CameraModel.h"
+#include "FPSCounter/FPSCounter.h"
+#include "ClippingSpace/ClippingSpace.h"
+#include "Color/Color.h"
+#include "Vector/Vectors.h"
+
+#include <iostream>
 #include <exception>
 
 #define DEG_TO_RAD(x) ((x) * (M_PI / 180.0))
 
-RenderSystem::RenderSystem(playground_qml_live_image_viewer::ui::ParameterModel& parameterModel) {
+RenderSystem::RenderSystem(playground_qml_live_image_viewer::ui::ParameterModel& parameterModel)
+	: mParameterModel(parameterModel) {
 
     /*
 
@@ -41,7 +42,6 @@ RenderSystem::RenderSystem(playground_qml_live_image_viewer::ui::ParameterModel&
 
     */
 
-    this->parameterModel = parameterModel;
    
     fc = new FpsCounter(60);
 
@@ -82,12 +82,12 @@ CameraModel* RenderSystem::create_matrices()
 
     // Create camera to world matrix
     cm->V_T_C = ht->createHomogeneousTransformationMatrix(
-        (mParameterModel.getCameraSystemTranslationX - 10000) / 1000.0,
-        (mParameterModel.getCameraSystemTranslationY - 10000) / 1000.0,
-        (mParameterModel.getCameraSystemTranslationZ - 10000) / 1000.0,
-        DEG_TO_RAD(mParameterModel.getCameraSystemRotationRoll / 10.0),
-        DEG_TO_RAD(mParameterModel.getCameraSystemRotationPitch / 10.0),
-        DEG_TO_RAD(mParameterModel.getCameraSystemRotationYaw / 10.0),
+		(mParameterModel.getCameraSystemTranslationX() - 10000) / 1000.0,
+		(mParameterModel.getCameraSystemTranslationY() - 10000) / 1000.0,
+		(mParameterModel.getCameraSystemTranslationZ() - 10000) / 1000.0,
+		DEG_TO_RAD(mParameterModel.getCameraSystemRotationRoll() / 10.0),
+		DEG_TO_RAD(mParameterModel.getCameraSystemRotationPitch() / 10.0),
+		DEG_TO_RAD(mParameterModel.getCameraSystemRotationYaw() / 10.0),
         1.0f);
 
     // Compute inverse (world to camera matrix)
@@ -95,13 +95,13 @@ CameraModel* RenderSystem::create_matrices()
 
     // Create cube to world matrix
     cm->V_T_Cube = ht->createHomogeneousTransformationMatrix(
-        (mParameterModel.getCubeSystemTranslationX - 10000) / 1000.0,
-        (mParameterModel.getCubeSystemTranslationY - 10000) / 1000.0,
-        (mParameterModel.getCubeSystemTranslationZ - 10000) / 1000.0,
-        DEG_TO_RAD(mParameterModel.getCubeSystemRotationRoll / 10.0),
-        DEG_TO_RAD(mParameterModel.getCubeSystemRotationPitch / 10.0),
-        DEG_TO_RAD(mParameterModel.getCubeSystemRotationYaw / 10.0),
-        mParameterModel.getCubeSystemScale);
+		(mParameterModel.getCubeSystemTranslationX() - 10000) / 1000.0,
+		(mParameterModel.getCubeSystemTranslationY() - 10000) / 1000.0,
+		(mParameterModel.getCubeSystemTranslationZ() - 10000) / 1000.0,
+		DEG_TO_RAD(mParameterModel.getCubeSystemRotationRoll() / 10.0),
+		DEG_TO_RAD(mParameterModel.getCubeSystemRotationPitch() / 10.0),
+		DEG_TO_RAD(mParameterModel.getCubeSystemRotationYaw() / 10.0),
+		mParameterModel.getCubeSystemScale());
 
     return cm;
 

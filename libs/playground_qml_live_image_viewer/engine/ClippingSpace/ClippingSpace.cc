@@ -1,6 +1,6 @@
 // Copyright (C) 2024 Marvin-VW
 #include "ClippingSpace.h"
-#include "Shape.h"
+
 #include <cmath>
 #include <iostream>
 #include <memory>

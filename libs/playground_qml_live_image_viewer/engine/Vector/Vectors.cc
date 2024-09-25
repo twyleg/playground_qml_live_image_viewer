@@ -1,9 +1,10 @@
 // Copyright (C) 2024 Marvin-VW
 #include "Vectors.h"
+
 #include <opencv2/opencv.hpp>
 #include <cmath>
 #include <set>
-#include "Shape.h"
+
 
 #define DEG_TO_RAD(x) ((x) * (M_PI / 180.0))
 

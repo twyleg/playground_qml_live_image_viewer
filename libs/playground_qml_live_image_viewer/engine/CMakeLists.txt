@@ -1,6 +1,6 @@
 # Copyright (C) 2024 twyleg
-set(NAMESPACE engine)
-set(MODULE core)
+set(NAMESPACE playground_qml_live_image_viewer)
+set(MODULE engine)
 
 set(TARGET_NAME "${NAMESPACE}_${MODULE}")
 
@@ -42,8 +42,10 @@ add_library("${NAMESPACE}::${MODULE}" ALIAS ${TARGET_NAME})
 #
 set_target_properties(${TARGET_NAME}
     PROPERTIES
-    CXX_STANDARD 17
-    INCLUDE_CURRENT_DIR ON
+        CXX_STANDARD 17
+        INCLUDE_CURRENT_DIR ON
+        AUTOMOC ON
+        AUTORCC ON
 )
 
 #
@@ -51,6 +53,7 @@ set_target_properties(${TARGET_NAME}
 #
 target_link_libraries(${TARGET_NAME}
     playground_qml_live_image_viewer::core
+    playground_qml_live_image_viewer::ui
     fmt::fmt
     Boost::system
     ${OpenCV_LIBS}
@@ -60,14 +63,7 @@ target_link_libraries(${TARGET_NAME}
 # add parent folder to targets include directories
 #
 target_include_directories(${TARGET_NAME}
-    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Camera
-    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Matrix
-    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Shape
-    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/FPSCounter
-    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/ClippingSpace
-    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Vector
-    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Color
-    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/
-    PRIVATE ${OpenCV_INCLUDE_DIRS}
+    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../
+    PUBLIC ${OpenCV_INCLUDE_DIRS}
     
 )

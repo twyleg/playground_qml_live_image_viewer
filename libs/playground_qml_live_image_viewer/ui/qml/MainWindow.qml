@@ -165,36 +165,24 @@ ApplicationWindow
                 onValueChanged: parameterModel.cubeSystemScale = value
             }
 
-            AdvancedSlider {
-                id: cubeSystemNormals
-                width: parent.width
+
+            AdvancedSwitch {
                 name: "cubeSystemNormals"
-                from: 0
-                to: 1
-                value: parameterModel.cubeSystemNormals
-                stepSize: 1
+                width: parent.width
                 onValueChanged: parameterModel.cubeSystemNormals = value
             }
 
-            AdvancedSlider {
-                id: cubeSystemPoints
-                width: parent.width
+
+            AdvancedSwitch {
                 name: "cubeSystemPoints"
-                from: 0
-                to: 1
-                value: parameterModel.cubeSystemPoints
-                stepSize: 1
+                width: parent.width
                 onValueChanged: parameterModel.cubeSystemPoints = value
             }
 
-            AdvancedSlider {
-                id: cubeSystemFaces
-                width: parent.width
+
+            AdvancedSwitch {
                 name: "cubeSystemFaces"
-                from: 0
-                to: 1
-                value: parameterModel.cubeSystemFaces
-                stepSize: 1
+                width: parent.width
                 onValueChanged: parameterModel.cubeSystemFaces = value
             }
 

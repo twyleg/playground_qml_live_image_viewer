@@ -1,9 +1,10 @@
 // Copyright (C) 2024 Marvin-VW
+#include "../Shape/Shape.h"
+
 #include <opencv2/opencv.hpp>
 #include <cmath>
 #include <vector>
 #include <set>
-#include "Shape.h"
 
 class Vectors {
 

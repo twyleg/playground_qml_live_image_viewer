@@ -1,5 +1,6 @@
 // Copyright (C) 2024 Marvin-VW
 #include "Engine.h"
+
 #include <cmath>
 #include <iostream>
 
@@ -16,8 +17,7 @@ float Engine::is_triangle_facing_camera(triangle& tri, cv::Vec3f cam) {
 
 
 Engine::Engine(int frame_width, int frame_height, playground_qml_live_image_viewer::ui::ParameterModel& parameterModel)
-{
-    this->parameterModel = parameterModel;
+	: mParameterModel(parameterModel) {
 
     // Initialize the graphics renderer
     renderer = new RenderSystem(parameterModel);
@@ -36,7 +36,7 @@ Engine::Engine(int frame_width, int frame_height, playground_qml_live_image_view
 }
 
 
-cv::Mat Engine::run(cv::Mat frame)
+cv::Mat Engine::run(cv::Mat& frame)
 {
 
     int red = mParameterModel.getCameraSystemTranslationX();

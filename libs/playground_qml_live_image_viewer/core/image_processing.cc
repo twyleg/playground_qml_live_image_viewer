@@ -1,8 +1,9 @@
 // Copyright (C) 2024 twyleg
 #include "image_processing.h"
-#include "Engine.h"
-#include <opencv2/opencv.hpp>
 
+#include <playground_qml_live_image_viewer/engine/Engine.h>
+
+#include <opencv2/opencv.hpp>
 #include <fmt/core.h>
 
 #include <optional>
@@ -23,58 +24,33 @@ ImageProcessing::~ImageProcessing() {}
 
 void ImageProcessing::run() {
 
+	int frame_width = 640;
+	int frame_height = 480;
 
-    cv::Mat frame = cv::Scalar(255, 255, 255);;
+	cv::Mat camera_frame;
     cv::Mat engine_frame;
 
-    int frame_width = 640;
-    int frame_height = 480;
-
-    Engine* engine = new Engine(frame_width, frame_height, mParameterModel);
+	Engine engine(frame_width, frame_height, mParameterModel);
 
     bool running = true;
 
     while(running) {
 
-        double relativ_x;
-        double relativ_y;
+		// double relativ_x;
+		// double relativ_y;
 
-        if (!ret) {
-            break;
-        }
+		camera_frame = cv::Mat(frame_height, frame_width, CV_8UC3, cv::Scalar(255,255,255));
 
-        engine_frame = engine->run(key, frame);
+		engine_frame = engine.run(camera_frame);
 
-        int red = mParameterModel.getCameraSystemTranslationX();
-        int green = mParameterModel.getCameraSystemTranslationY();
-        int blue = mParameterModel.getCameraSystemTranslationZ();
-
-		auto newImage = generate_test_image(red, green, blue);
-
-		mImageModel.setImage(newImage);
+		QImage img((uchar*)engine_frame.data, engine_frame.cols, engine_frame.rows, QImage::Format_RGB888);
+		mImageModel.setImage(QPixmap::fromImage(img));
 
 		msleep(1000 / 60.0);
 
     }
 
-    cap.release();
-    cv::destroyAllWindows();
-
-    delete engine;
 }
 
-
-QPixmap ImageProcessing::generate_test_image(int red, int green, int blue) {
-   int width = 1280;
-   int height = 720;
-
-   QPixmap pixmap(width, height);
-
-   //QPixmap foo()
-
-   pixmap.fill(QColor(red, green, blue).rgba());
-   return pixmap;
-
-}
 
 }
