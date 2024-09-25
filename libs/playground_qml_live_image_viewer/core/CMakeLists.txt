@@ -40,6 +40,7 @@ set_target_properties(${TARGET_NAME}
 # link against libs
 #
 target_link_libraries(${TARGET_NAME}
+    engine::core
     playground_qml_live_image_viewer::ui
     fmt::fmt
     Boost::system

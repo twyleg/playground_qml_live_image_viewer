@@ -10,9 +10,11 @@ add_subdirectory(external/googletest/)
 # Libs
 add_subdirectory(libs/playground_qml_live_image_viewer/core/)
 add_subdirectory(libs/playground_qml_live_image_viewer/ui/)
+add_subdirectory(libs/playground_qml_live_image_viewer/engine/)
 
 # Apps
 add_subdirectory(apps/playground_qml_live_image_viewer)
+
 
 # Unit-Test
 add_subdirectory(unit_tests/)

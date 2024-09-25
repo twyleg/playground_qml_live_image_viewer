@@ -22,10 +22,11 @@ public:
 
 	void run() override;
 
-private:
-
 	playground_qml_live_image_viewer::ui::ImageModel& mImageModel;
 	playground_qml_live_image_viewer::ui::ParameterModel& mParameterModel;
+
+
+private:
 
 	QPixmap generate_test_image(int red, int green, int blue);
 
