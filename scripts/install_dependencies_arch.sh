@@ -54,5 +54,6 @@ pacman -Suy --noconfirm \
         qt6-websockets \
         qt6-webview \
         qt6-xcb-private-headers \
-        opencv
+        opencv \
+        vtk
 
