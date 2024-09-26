@@ -15,5 +15,5 @@ apt-get install -y \
         libgl1 \
         libegl1-mesa-dev \
         qt6-* \
-        qml6-module-*
-
+        qml6-module-* \
+        libopencv-dev

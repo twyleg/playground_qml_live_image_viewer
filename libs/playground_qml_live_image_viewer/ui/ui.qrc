@@ -2,6 +2,5 @@
     <qresource prefix="/frontend">
         <file>qml/MainWindow.qml</file>
         <file>qml/items/AdvancedSlider.qml</file>
-        <file>qml/items/AdvancedSwitch.qml</file>
     </qresource>
 </RCC>

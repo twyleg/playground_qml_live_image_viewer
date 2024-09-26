@@ -166,24 +166,22 @@ ApplicationWindow
             }
 
 
-            AdvancedSwitch {
-                name: "cubeSystemNormals"
+            Switch {
+                text: "cubeSystemNormals"
                 width: parent.width
-                onValueChanged: parameterModel.cubeSystemNormals = value
+                onPositionChanged: parameterModel.cubeSystemNormals = position
             }
 
-
-            AdvancedSwitch {
-                name: "cubeSystemPoints"
+            Switch {
+                text: "cubeSystemPoints"
                 width: parent.width
-                onValueChanged: parameterModel.cubeSystemPoints = value
+                onPositionChanged: parameterModel.cubeSystemPoints = position
             }
 
-
-            AdvancedSwitch {
-                name: "cubeSystemFaces"
+            Switch {
+                text: "cubeSystemFaces"
                 width: parent.width
-                onValueChanged: parameterModel.cubeSystemFaces = value
+                onPositionChanged: parameterModel.cubeSystemFaces = position
             }
 
         }
