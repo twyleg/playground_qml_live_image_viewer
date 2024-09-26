@@ -55,5 +55,6 @@ pacman -Suy --noconfirm \
         qt6-webview \
         qt6-xcb-private-headers \
         opencv \
-        vtk
-
+        vtk \
+        hdf5 \
+        glew
